@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <meta name="description" content="" />
+
+    <link rel="icon" type="image/png" href="/public/favicon.png" />
+
+    <title>A Title</title>
+  </head>
+
+  <style>
+    .nums {
+      font-size: 72px;
+    }
+    .nums .active {
+      background: pink;
+    }
+  </style>
+
+  <script>
+    function scroll_active_into_view() {
+      setTimeout(function() {
+        const e = document.querySelector(".nums .active");
+        if (e) {
+          if (e.scrollIntoViewIfNeeded) {
+            e.scrollIntoViewIfNeeded();
+          } else {
+            e.scrollIntoView();
+          }
+        }
+      });
+    }
+
+    function scroll_to_top() {
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      });
+    }
+  </script>
+
+  <body>
+    <section id="app"></section>
+    <script type="module">
+      // https://rustwasm.github.io/docs/wasm-bindgen/examples/without-a-bundler.html
+      import init from "/pkg/package.js";
+      init("/pkg/package_bg.wasm");
+    </script>
+  </body>
+</html>
